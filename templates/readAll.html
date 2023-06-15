@@ -34,8 +34,7 @@
             <thead>
                 <!--! How to combine the first and last to make a Full Name?-->
                 <tr class="table table-row-1 text-light">
-                    <th>First Name</th>
-                    <th>Last Name</th>
+                    <th>Full Name</th>
                     <th>Email</th>
                     <th>Created At</th>
                 </tr>
@@ -44,8 +43,7 @@
                 {% for i in users %}
                 <tr>
                     <!-- need to combine first and last to make full name*-->
-                    <td>{{ i.first_name }}</td>
-                    <td>{{ i.last_name }}</td>
+                    <td>{{ i.first_name }} {{ i.last_name }}</td>
                     <td>{{ i.email }}</td>
                     <td>{{ i.created_at }}</td>
                 </tr>
