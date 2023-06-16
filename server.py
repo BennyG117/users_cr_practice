@@ -28,5 +28,38 @@ def new():
     USER.save(request.form)
     return redirect('/readAll')
 
+# new route going from show button on readAll.html to the readOne.html
+@app.route('/readOne/<int:id>')
+def show_one(id):
+    #command to view readOne.html
+
+    return render_template('readOne.html', user = USER.get_one({'id':id}))
+
+# new route going from readOne to the edit.html
+@app.route('/edit/<int:id>')
+def editView(id):
+    #command to view edit.html
+
+    return render_template('edit.html', user = USER.get_one({'id':id}))
+
+
+# edit the user data
+@app.route('/update', methods=['POST'])
+def updating():
+    #command to view edit.html
+    USER.update(request.form)
+    return redirect('/readAll')
+
+
+# new route to delete targeted user by pressing button on readAll.html, then refreshes itself to sho updated readAll.html page(goes back to same current home page, but show's list with deleted user gone)
+@app.route('/delete/<int:id>')
+def remove(id):
+    #command to delet?
+    USER.delete({'id':id})
+    # USER.delete(id)
+
+    return redirect('/readAll')
+
+
 if __name__=="__main__":  
     app.run(debug=True, port=5001)

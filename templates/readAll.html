@@ -32,11 +32,11 @@
             class="table container table-dark table-hover table-striped rounded border border-1 border-light mt-5 text-capitalize table-bordered">
 
             <thead>
-                <!--! How to combine the first and last to make a Full Name?-->
                 <tr class="table table-row-1 text-light">
                     <th>Full Name</th>
                     <th>Email</th>
                     <th>Created At</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -46,6 +46,7 @@
                     <td>{{ i.first_name }} {{ i.last_name }}</td>
                     <td>{{ i.email }}</td>
                     <td>{{ i.created_at }}</td>
+                    <td><a href="/readOne/{{i.id}}">Show</a> | <a href="/edit/{{i.id}}">Edit</a> | <a href="/delete/{{i.id}}">Delete</a> </td>
                 </tr>
                 {% endfor %}
             </tbody>

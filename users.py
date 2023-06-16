@@ -32,3 +32,42 @@ class USER:
         
         result = connectToMySQL(cls.DB).query_db(query, data)
         return result
+    
+
+    # update edit action to save revised user data for a specific users id
+    @classmethod
+    def update(cls, data):
+        #must correct on workbench first to insert correct query text*
+        query = """
+        UPDATE users
+        SET first_name = %(first_name)s , last_name = %(last_name)s , email = %(email)s
+        WHERE id = %(id)s ;
+        """
+        
+        result = connectToMySQL(cls.DB).query_db(query, data)
+        return result
+    
+    # get_one action to view specific user id
+    @classmethod
+    def get_one(cls, data):
+        #must correct on workbench first to insert correct query text*
+        query = """SELECT * 
+        FROM users
+        WHERE id = %(id)s;"""
+        # make sure to call the connectToMySQL function with the schema you are targeting.
+        results = connectToMySQL(cls.DB).query_db(query, data)
+        # Create an empty list to append our instances of single user
+        singleUser = cls(results[0])
+        
+        return singleUser
+
+    # action to delete specific user id
+    @classmethod
+    def delete(cls, data):
+        query = """DELETE FROM users 
+        WHERE id = %(id)s"""
+        #temp dict to complete the query we have
+        # data={'id':id}
+
+        result = connectToMySQL(cls.DB).query_db(query, data)
+        return result
