@@ -1,5 +1,5 @@
 # import the function that will return an instance of a connection
-from mysqlconnection import connectToMySQL
+from flask_app.config.mysqlconnection import connectToMySQL
 # model the class after the users table from our database
 
 class USER: 
@@ -33,7 +33,6 @@ class USER:
         result = connectToMySQL(cls.DB).query_db(query, data)
         return result
     
-
     # update edit action to save revised user data for a specific users id
     @classmethod
     def update(cls, data):
